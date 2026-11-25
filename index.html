@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آسمان‌آرا | سفر بعدی شما، از اینجا آغاز می‌شود</title>
+<meta name="description" content="بلیط هواپیما، تورهای داخلی و خارجی و تجربه‌ای متفاوت از سفر را با آسمان‌آرا تجربه کنید.">
+<link rel="preload" as="video" href="hero-video.mp4" type="video/mp4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+<style>
+@font-face{font-family:"Vazirmatn";src:url("fonts/Vazirmatn-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Vazirmatn";src:url("fonts/Vazirmatn-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--sky:#62C4FF;--deep:#269FE8;--light:#E8F7FF;--white:#fff;--bg:#F6FBFE;--gray:#EAF2F6;
+--text:#172B3A;--muted:#667784;--radius:22px;
+--shadow:0 20px 60px rgba(38,159,232,.14);
+--shadow-sm:0 8px 28px rgba(23,43,58,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:"Vazirmatn",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.9;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{width:min(1200px,92%);margin:0 auto}
+section{padding:96px 0}
+/* NAV */
+header{position:fixed;top:16px;right:0;left:0;z-index:50;opacity:0;visibility:hidden;transform:translateY(-18px);pointer-events:none;transition:opacity .6s ease,transform .6s ease,visibility .6s}
+header.hdr-show{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.nav{width:min(1240px,94%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px;border-radius:20px;background:rgba(255,255,255,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.28);box-shadow:0 10px 40px rgba(0,0,0,.18);color:#fff;transition:.3s}
+.nav.scrolled{background:rgba(255,255,255,.92);color:var(--text);border-color:rgba(38,159,232,.12);box-shadow:var(--shadow-sm)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px}
+.logo-mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--sky),var(--deep));display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 8px 20px rgba(38,159,232,.4)}
+.menu{display:flex;gap:26px;font-size:15px}
+.menu a{opacity:.92;position:relative;padding:4px 0}
+.menu a::after{content:"";position:absolute;bottom:0;right:0;width:0;height:2px;background:currentColor;border-radius:2px;transition:.3s}
+.menu a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.login{font-size:14px;opacity:.9}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:inherit;font-weight:700;border-radius:999px;padding:13px 28px;font-size:15px;transition:.3s}
+.btn-primary{background:linear-gradient(135deg,var(--sky),var(--deep));color:#fff;box-shadow:0 12px 28px rgba(38,159,232,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(38,159,232,.45)}
+.btn-white{background:#fff;color:var(--text)}
+.btn-white:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.45)}
+.hamburger{display:none;background:none;border:none;color:inherit;font-size:26px;cursor:pointer}
+.mobile-menu{display:none}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;padding:140px 0 160px;background:#0b2a44}
+.hero video,.hero .hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .hero-poster{background:url("photos/wing.webp") center/cover no-repeat, linear-gradient(180deg,#62C4FF,#269FE8);filter:saturate(1.1)}
+.hero video{z-index:1}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,35,60,.55) 0%,rgba(23,80,130,.35) 40%,rgba(10,30,55,.62) 100%),radial-gradient(ellipse at center,transparent 40%,rgba(5,20,35,.45) 100%)}
+.hero-clouds{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.9;background-image:radial-gradient(ellipse 220px 60px at 15% 30%,rgba(255,255,255,.35),transparent),radial-gradient(ellipse 320px 80px at 75% 20%,rgba(255,255,255,.28),transparent),radial-gradient(ellipse 260px 70px at 55% 65%,rgba(255,255,255,.22),transparent);animation:cloudMove 18s ease-in-out infinite alternate}
+@keyframes cloudMove{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+.hero-content{position:relative;z-index:4;width:min(860px,92%);margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);padding:8px 18px;border-radius:999px;font-size:13px;margin-bottom:22px}
+.hero h1{font-size:clamp(32px,6vw,62px);line-height:1.35;font-weight:700;text-shadow:0 4px 30px rgba(0,0,0,.35);margin-bottom:16px}
+.hero p{font-size:clamp(15px,2.4vw,19px);opacity:.94;text-shadow:0 2px 12px rgba(0,0,0,.4);margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* CINEMATIC SCROLL HERO */
+.hero-scroll{position:relative;height:400vh;background:#0b2a44}
+.hero-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.hero-intro{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;pointer-events:none;padding:20px;will-change:opacity,transform}
+.intro-card{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #fff;border-radius:22px;padding:22px 24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.25);max-width:min(520px,calc(100vw - 32px));margin:0 16px}
+@media(max-width:620px){.intro-card{padding:18px 16px;margin:0 12px;max-width:calc(100vw - 24px)}.intro-title{font-size:16px!important;line-height:1.6!important}.intro-sub{font-size:13px!important}}
+.intro-title{color:#000;font-weight:700;font-size:clamp(19px,3.2vw,28px);line-height:1.7}
+.intro-sub{color:#000;font-weight:700;font-size:15px;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:10px}
+.scroll-icon{width:24px;height:38px;border:2.5px solid #000;border-radius:14px;display:inline-flex;justify-content:center;padding-top:7px}
+.scroll-icon .wheel{width:4px;height:8px;border-radius:4px;background:#000;animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}50%{transform:translateY(9px);opacity:.25}100%{transform:translateY(0);opacity:1}}
+#heroContent{visibility:hidden}
+#heroContent .h-rev{opacity:0;transform:translateY(40px);will-change:opacity,transform}
+#heroVideo{will-change:currentTime;transform:translateZ(0);opacity:0}
+/* SEARCH */
+.search-wrap{position:relative;z-index:10;margin-top:-90px}
+.search-card{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border:1px solid #fff;border-radius:26px;box-shadow:var(--shadow);padding:26px;display:grid;grid-template-columns:1fr 40px 1fr 1fr 1fr 1fr 1fr auto;gap:12px;align-items:end}
+.field{display:flex;flex-direction:column;gap:6px;text-align:right}
+.field label{font-size:12.5px;color:var(--muted);font-weight:700}
+.field input,.field select{font-family:inherit;border:1.5px solid var(--gray);background:#fff;border-radius:14px;padding:12px 14px;font-size:14px;color:var(--text);outline:none;transition:.2s;width:100%}
+.field input:focus,.field select:focus{border-color:var(--deep);box-shadow:0 0 0 4px rgba(98,196,255,.18)}
+.swap{width:40px;height:48px;border-radius:12px;border:1.5px solid var(--gray);background:var(--light);color:var(--deep);font-size:20px;cursor:pointer;align-self:end}
+.search-btn{padding:13px 30px;white-space:nowrap}
+/* SECTION HEAD */
+.eyebrow{color:var(--deep);font-weight:700;font-size:13px;background:var(--light);display:inline-block;padding:6px 16px;border-radius:999px;margin-bottom:14px}
+h2.sec-title{font-size:clamp(24px,4vw,38px);line-height:1.5;margin-bottom:10px}
+.sec-sub{color:var(--muted);max-width:640px;margin-bottom:40px}
+/* DESTINATIONS */
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dest-card{position:relative;border-radius:var(--radius);overflow:hidden;height:420px;box-shadow:var(--shadow-sm);cursor:pointer;background:#ddd}
+.dest-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.dest-card:hover img{transform:scale(1.08)}
+.dest-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(8,28,48,.78) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:26px;color:#fff;transition:.3s}
+.dest-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.dest-card{transition:.4s}
+.dest-country{font-size:13px;opacity:.85}
+.dest-name{font-size:24px;font-weight:700}
+.dest-meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font-weight:700;font-size:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:999px;backdrop-filter:blur(8px)}
+.view-link{font-size:14px;opacity:0;transform:translateY(8px);transition:.3s;color:#fff}
+.dest-card:hover .view-link{opacity:1;transform:none}
+/* SERVICES */
+.services{background:#fff;border-radius:36px;margin:0 auto;width:min(1280px,96%)}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.serv{background:var(--bg);border:1px solid var(--gray);border-radius:20px;padding:30px 26px;transition:.3s}
+.serv:hover{background:#fff;border-color:var(--sky);box-shadow:var(--shadow-sm);transform:translateY(-4px)}
+.serv-icon{width:56px;height:56px;border-radius:16px;background:var(--light);color:var(--deep);display:grid;place-items:center;margin-bottom:16px}
+.serv-icon svg{width:28px;height:28px}
+.serv h3{font-size:17px;margin-bottom:8px}
+.serv p{font-size:14px;color:var(--muted);line-height:1.9}
+/* WHY */
+.why{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.why-img{border-radius:28px;overflow:hidden;box-shadow:var(--shadow);position:relative;height:560px}
+.why-img img{width:100%;height:100%;object-fit:cover}
+.why-badge{position:absolute;bottom:20px;right:20px;left:20px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:18px;padding:16px 20px;display:flex;gap:14px;align-items:center}
+.why-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.why-item{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--gray);border-radius:16px;padding:16px}
+.why-item .dot{width:38px;height:38px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--sky),var(--deep));color:#fff;display:grid;place-items:center;font-size:18px}
+/* EXPERIENCE */
+.exp{background:linear-gradient(135deg,#0e2f52,#1b6aa8);border-radius:36px;color:#fff;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;padding:0}
+.exp-text{padding:64px 54px;display:flex;flex-direction:column;justify-content:center}
+.exp-text h2{font-size:clamp(24px,3.6vw,36px);margin-bottom:16px;line-height:1.6}
+.exp-text p{opacity:.88;margin-bottom:28px}
+.exp-img{min-height:420px}
+.exp-img img{width:100%;height:100%;object-fit:cover;min-height:420px}
+/* PARTNERS */
+.partners{text-align:center;padding:60px 0}
+.logos{display:flex;gap:18px;overflow:hidden;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.logo-pill{background:#fff;border:1px solid var(--gray);border-radius:999px;padding:12px 28px;font-weight:700;color:#8aa0b0;letter-spacing:.3px;filter:grayscale(1);transition:.3s;font-size:15px}
+.logo-pill:hover{filter:none;color:var(--text);border-color:var(--sky);transform:translateY(-2px)}
+/* PACKAGES */
+.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pack{background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--gray);transition:.35s}
+.pack:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.pack-img{height:240px;overflow:hidden;position:relative}
+.pack-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.pack:hover .pack-img img{transform:scale(1.06)}
+.pack-tag{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.92);padding:6px 14px;border-radius:999px;font-size:12px;font-weight:700;color:var(--deep)}
+.pack-body{padding:24px}
+.stars{color:#FFB800;font-size:14px;letter-spacing:2px}
+.pack h3{font-size:19px;margin:8px 0 4px}
+.pack-info{font-size:13px;color:var(--muted)}
+.pack-foot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:18px;border-top:1px dashed var(--gray)}
+.pack-price{font-weight:700;color:var(--deep)}
+.pack-price small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{background:rgba(255,255,255,.75);backdrop-filter:blur(14px);border:1px solid #fff;border-radius:20px;padding:28px;box-shadow:var(--shadow-sm)}
+.testi-head{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--deep));color:#fff;display:grid;place-items:center;font-weight:700;font-size:20px}
+.testi p{font-size:14.5px;color:#3a4f60}
+/* STATS */
+.stats{background:#fff;border-radius:28px;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:48px 20px;box-shadow:var(--shadow-sm);border:1px solid var(--gray)}
+.stat b{font-size:clamp(28px,4vw,44px);color:var(--deep);display:block;line-height:1.2}
+.stat span{color:var(--muted);font-size:14px}
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.blog{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--gray);transition:.3s}
+.blog:hover{transform:translateY(-5px);box-shadow:var(--shadow-sm)}
+.blog-img{height:180px;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover}
+.blog-body{padding:20px}
+.blog-body h3{font-size:15.5px;line-height:1.8;margin-bottom:8px}
+.blog-meta{font-size:12px;color:var(--muted)}
+/* NEWSLETTER */
+.newsletter{background:linear-gradient(180deg,#E8F7FF,#CDEEFF);border-radius:32px;text-align:center;position:relative;overflow:hidden;padding:80px 24px}
+.newsletter::before{content:"";position:absolute;inset:0;background-image:radial-gradient(ellipse 300px 90px at 20% 25%,rgba(255,255,255,.9),transparent),radial-gradient(ellipse 380px 100px at 80% 70%,rgba(255,255,255,.85),transparent),radial-gradient(ellipse 200px 60px at 60% 20%,rgba(255,255,255,.7),transparent)}
+.newsletter>div{position:relative}
+.news-form{display:flex;gap:10px;max-width:520px;margin:28px auto 0;background:#fff;padding:8px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.news-form input{flex:1;border:none;outline:none;padding:12px 20px;font-family:inherit;font-size:14px;background:transparent}
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{background:#fff;border:1px solid var(--gray);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;font-family:inherit;font-size:15px;font-weight:700;text-align:right;padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);font-size:14px}
+.faq-a div{padding:0 22px 20px}
+.faq-item.open .faq-a{max-height:220px}
+.faq-item .plus{width:30px;height:30px;border-radius:50%;background:var(--light);color:var(--deep);display:grid;place-items:center;font-size:20px;flex-shrink:0;transition:.3s}
+.faq-item.open .plus{transform:rotate(45deg)}
+/* FOOTER */
+footer{background:linear-gradient(180deg,#E8F7FF 0%,#BFE7FF 60%,#9BDAFF 100%);border-radius:36px 36px 0 0;padding:64px 0 24px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:28px;margin-bottom:40px}
+.foot-grid h4{font-size:15px;margin-bottom:14px}
+.foot-grid a{display:block;font-size:13.5px;color:#3a5a75;margin-bottom:8px}
+.foot-grid a:hover{color:var(--deep)}
+.socials{display:flex;gap:10px;margin-top:16px}
+.socials a{width:38px;height:38px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:17px;margin:0;box-shadow:var(--shadow-sm)}
+.copy{border-top:1px solid rgba(23,43,58,.12);padding-top:20px;text-align:center;font-size:13px;color:#3a5a75}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+/* RESPONSIVE */
+@media(max-width:1020px){
+.search-card{grid-template-columns:1fr 1fr;}.swap{display:none}.search-btn{grid-column:1/-1}
+.dest-grid,.serv-grid,.pack-grid,.testi-grid{grid-template-columns:1fr 1fr}
+.why,.exp{grid-template-columns:1fr}.why-img{height:380px}
+.blog-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr;gap:28px}
+.foot-grid{grid-template-columns:1fr 1fr}
+.menu{display:none}.hamburger{display:block}
+.mobile-menu{position:fixed;inset:0;background:rgba(10,30,50,.96);z-index:99;display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;color:#fff;font-size:20px}
+.mobile-menu.show{display:flex}
+}
+@media(max-width:620px){
+.nav{padding:10px 14px;gap:8px}.login{display:none}.nav .btn-primary{padding:8px 16px!important;font-size:13px;white-space:nowrap}.logo{font-size:18px}.logo-mark{width:34px;height:34px;font-size:18px}
+
+section{padding:64px 0}
+.search-card{grid-template-columns:1fr}
+.dest-grid,.serv-grid,.pack-grid,.testi-grid,.blog-grid{grid-template-columns:1fr}
+.dest-card{height:360px}.foot-grid{grid-template-columns:1fr}.exp-text{padding:40px 28px}
+.news-form{flex-direction:column;border-radius:22px}.news-form .btn{width:100%}
+.hero-ctas .btn{width:100%}
+}
+:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="nav" id="nav">
+<div class="logo"><span class="logo-mark">✈</span> آسمان‌آرا</div>
+<div class="menu">
+<a href="#">صفحه اصلی</a><a href="#tickets">بلیط هواپیما</a><a href="#tours">تورها</a><a href="#dest">مقاصد</a><a href="#services">خدمات</a><a href="#about">درباره ما</a>
+</div>
+<div class="nav-actions">
+<a class="login" href="#">ورود / ثبت‌نام</a>
+<a class="btn btn-primary" href="#search" style="padding:10px 22px">رزرو بلیط</a>
+<button class="hamburger" id="ham">☰</button>
+</div>
+</nav>
+</header>
+<div class="mobile-menu" id="mmenu">
+<a href="#">صفحه اصلی</a><a href="#tickets">بلیط هواپیما</a><a href="#tours">تورها</a><a href="#dest">مقاصد</a><a href="#services">خدمات</a><a href="#about">درباره ما</a>
+<a class="btn btn-white" href="#search">رزرو بلیط</a>
+</div>
+
+<!-- CINEMATIC SCROLL HERO: pinned 400vh, video scrub via currentTime, intro -> video -> content -->
+<div class="hero-scroll" id="heroScroll">
+<div class="hero-sticky">
+<div class="hero" id="hero">
+<div class="hero-poster"></div>
+<video id="heroVideo" muted playsinline preload="auto" disablepictureinpicture poster="photos/wing.webp" data-frames="122">
+<source src="hero-video.mp4" type="video/mp4">
+<source src="https://videos.pexels.com/video-files/32711067/13944996_2560_1440_30fps.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay" id="heroOverlay"></div>
+<div class="hero-clouds" id="heroClouds"></div>
+<div class="hero-intro" id="heroIntro">
+<div class="intro-card">
+<div class="intro-title">اولین سفر شما با اسکرول آغاز می‌شود</div>
+<div class="intro-sub">اسکرول کنید <span class="scroll-icon" aria-hidden="true"><span class="wheel"></span></span></div>
+</div>
+</div>
+<div class="hero-content" id="heroContent">
+<div class="badge h-rev">✨ آژانس هواپیمایی لوکس • ۱۵ سال تجربه</div>
+<h1 class="h-rev">سفر بعدی شما، از اینجا آغاز می‌شود</h1>
+<p class="h-rev">بلیط هواپیما، تورهای داخلی و خارجی و تجربه‌ای متفاوت از سفر را با ما تجربه کنید.</p>
+<div class="hero-ctas h-rev">
+<a href="#search" class="btn btn-primary">رزرو بلیط</a>
+<a href="#dest" class="btn btn-ghost">کشف مقاصد</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container search-wrap" id="search">
+<form class="search-card" id="tickets" onsubmit="return searchFlight(event)">
+<div class="field"><label>مبدا</label><select id="from"><option>تهران (IKA)</option><option>مشهد (MHD)</option><option>اصفهان (IFN)</option><option>شیراز (SYZ)</option><option>تبریز (TBZ)</option></select></div>
+<button type="button" class="swap" onclick="swapCity()" title="جابه‌جایی">⇄</button>
+<div class="field"><label>مقصد</label><select id="to"><option>استانبول (IST)</option><option>دبی (DXB)</option><option>پاریس (CDG)</option><option>لندن (LHR)</option><option>مالدیو (MLE)</option><option>توکیو (HND)</option></select></div>
+<div class="field"><label>تاریخ رفت</label><input type="date" value="2026-11-15"></div>
+<div class="field"><label>تاریخ برگشت</label><input type="date" value="2026-11-22"></div>
+<div class="field"><label>مسافران</label><select><option>۱ مسافر</option><option>۲ مسافر</option><option>۳ مسافر</option><option>۴+ مسافر</option></select></div>
+<div class="field"><label>کلاس پروازی</label><select><option>اکونومی</option><option>بیزینس</option><option>فرست کلاس</option></select></div>
+<button class="btn btn-primary search-btn">جستجوی پرواز</button>
+</form>
+<div id="searchResult" style="text-align:center;margin-top:14px;font-size:14px;color:var(--deep);font-weight:700"></div>
+</div>
+
+<section id="dest"><div class="container">
+<span class="eyebrow">✈ مقاصد محبوب</span>
+<h2 class="sec-title reveal">مقصد بعدی شما کجاست؟</h2>
+<p class="sec-sub reveal">از شهرهای پرهیجان دنیا تا آرام‌ترین سواحل، مقصد مورد علاقه‌تان را پیدا کنید.</p>
+<div class="dest-grid">
+<div class="dest-card reveal"><img src="photos/istanbul.webp" alt="استانبول" loading="lazy"><div class="dest-overlay"><div class="dest-country">ترکیه</div><div class="dest-name">استانبول</div><div class="dest-meta"><span class="price">از ۱۲٬۹۰۰٬۰۰۰ تومان</span><span class="view-link">مشاهده مقصد ←</span></div></div></div>
+<div class="dest-card reveal"><img src="photos/dubai.webp" alt="دبی" loading="lazy"><div class="dest-overlay"><div class="dest-country">امارات</div><div class="dest-name">دبی</div><div class="dest-meta"><span class="price">از ۱۴٬۵۰۰٬۰۰۰ تومان</span><span class="view-link">مشاهده مقصد ←</span></div></div></div>
+<div class="dest-card reveal"><img src="photos/paris.webp" alt="پاریس" loading="lazy"><div class="dest-overlay"><div class="dest-country">فرانسه</div><div class="dest-name">پاریس</div><div class="dest-meta"><span class="price">از ۳۸٬۰۰۰٬۰۰۰ تومان</span><span class="view-link">مشاهده مقصد ←</span></div></div></div>
+<div class="dest-card reveal"><img src="photos/london.webp" alt="لندن" loading="lazy"><div class="dest-overlay"><div class="dest-country">انگلستان</div><div class="dest-name">لندن</div><div class="dest-meta"><span class="price">از ۴۱٬۰۰۰٬۰۰۰ تومان</span><span class="view-link">مشاهده مقصد ←</span></div></div></div>
+<div class="dest-card reveal"><img src="photos/maldives.webp" alt="مالدیو" loading="lazy"><div class="dest-overlay"><div class="dest-country">مالدیو</div><div class="dest-name">مالدیو</div><div class="dest-meta"><span class="price">از ۴۹٬۹۰۰٬۰۰۰ تومان</span><span class="view-link">مشاهده مقصد ←</span></div></div></div>
+<div class="dest-card reveal"><img src="photos/tokyo.webp" alt="توکیو" loading="lazy"><div class="dest-overlay"><div class="dest-country">ژاپن</div><div class="dest-name">توکیو</div><div class="dest-meta"><span class="price">از ۵۵٬۰۰۰٬۰۰۰ تومان</span><span class="view-link">مشاهده مقصد ←</span></div></div></div>
+</div>
+</div></section>
+
+<div class="services" id="services"><section style="padding:80px 0"><div class="container">
+<span class="eyebrow">خدمات ما</span>
+<h2 class="sec-title reveal">همه چیز برای یک سفر بی‌دغدغه</h2>
+<p class="sec-sub reveal">از خرید بلیط تا برگشت به خانه، کنارتان هستیم.</p>
+<div class="serv-grid">
+<div class="serv reveal"><div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h20M6 12V6l6-3 6 3v6M6 12l-2 8m4-8-1 8m9-8 1 8m2-8 2 8"/></svg></div><h3>رزرو بلیط هواپیما</h3><p>بهترین قیمت پروازهای داخلی و خارجی با امکان استرداد سریع و پشتیبانی واقعی.</p></div>
+<div class="serv reveal"><div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2 3.5 2 14 0 18M12 3c-2 3.5-2 14 0 18"/></svg></div><h3>تورهای مسافرتی</h3><p>تورهای گروهی و اختصاصی داخلی و خارجی با هتل‌های منتخب و لیدر حرفه‌ای.</p></div>
+<div class="serv reveal"><div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11V7a2 2 0 012-2h14a2 2 0 012 2v4M3 11h18M3 11v8a2 2 0 002 2h14a2 2 0 002-2v-8M7 15h.01M17 15h.01"/></svg></div><h3>رزرو هتل</h3><p>بیش از ۵۰۰ هزار هتل در سراسر دنیا با تضمین بهترین قیمت و کنسلی آسان.</p></div>
+<div class="serv reveal"><div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><h3>خدمات ویزا</h3><p>اخذ ویزای شینگن، کانادا، دبی و سایر کشورها با بالاترین نرخ قبولی.</p></div>
+<div class="serv reveal"><div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>بیمه مسافرتی</h3><p>پوشش کامل درمانی، بار و کنسلی سفر با معتبرترین شرکت‌های بیمه.</p></div>
+<div class="serv reveal"><div class="serv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16V8a2 2 0 012-2h11a2 2 0 012 2v8M3 16h18M3 16v2a1 1 0 001 1h2m14-3v2a1 1 0 01-1 1h-2"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div><h3>ترانسفر فرودگاهی</h3><p>استقبال اختصاصی در فرودگاه با خودروی تشریفاتی، بدون معطلی و استرس.</p></div>
+</div>
+</div></section></div>
+
+<section id="about"><div class="container why">
+<div class="why-img reveal"><img src="photos/cabin.webp" alt="کابین لوکس هواپیما" loading="lazy"><div class="why-badge"><span style="font-size:28px">🏆</span><div><b>۱۵ سال تجربه درخشان</b><div style="font-size:13px;color:var(--muted)">همکار رسمی ۴۰ ایرلاین معتبر دنیا</div></div></div></div>
+<div>
+<span class="eyebrow">چرا آسمان‌آرا؟</span>
+<h2 class="sec-title reveal">سفر، وقتی بهتر است که خیالتان راحت باشد</h2>
+<p class="sec-sub reveal" style="margin-bottom:0">ما فقط بلیط نمی‌فروشیم؛ آرامش سفر شما را تضمین می‌کنیم؛ از لحظه جستجو تا لحظه بازگشت.</p>
+<div class="why-list">
+<div class="why-item reveal"><span class="dot">💎</span><div><b>قیمت‌های رقابتی</b><div style="font-size:13px;color:var(--muted)">تضمین ارزان‌ترین قیمت پرواز</div></div></div>
+<div class="why-item reveal"><span class="dot">⚡</span><div><b>رزرو سریع و آسان</b><div style="font-size:13px;color:var(--muted)">خرید در کمتر از ۳ دقیقه</div></div></div>
+<div class="why-item reveal"><span class="dot">🎧</span><div><b>پشتیبانی ۲۴ ساعته</b><div style="font-size:13px;color:var(--muted)">پاسخ‌گو حتی وسط پرواز</div></div></div>
+<div class="why-item reveal"><span class="dot">🔒</span><div><b>پرداخت امن</b><div style="font-size:13px;color:var(--muted)">درگاه بانکی معتبر و رمزنگاری‌شده</div></div></div>
+<div class="why-item reveal"><span class="dot">✈️</span><div><b>ایرلاین‌های معتبر</b><div style="font-size:13px;color:var(--muted)">همکاری با امارات، قطر و ترکیش</div></div></div>
+<div class="why-item reveal"><span class="dot">🤝</span><div><b>خدمات پس از فروش</b><div style="font-size:13px;color:var(--muted)">استرداد و تغییر بلیط بدون دردسر</div></div></div>
+</div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="container exp reveal">
+<div class="exp-text">
+<span class="badge">🌤️ تجربه متفاوت</span>
+<h2>بیشتر از یک بلیط، یک تجربه</h2>
+<p>ما باور داریم سفر فقط رسیدن نیست؛ تماشای ابرها از پشت پنجره، بوی قهوه در لانژ فرودگاه و حس آزادی وسط آسمان است. آسمان‌آرا کل این مسیر را برای شما طراحی می‌کند، نه فقط یک صندلی هواپیما.</p>
+<a href="#services" class="btn btn-white" style="align-self:start">مشاهده خدمات</a>
+</div>
+<div class="exp-img"><img src="photos/wing.webp" alt="بال هواپیما بالای ابرها" loading="lazy"></div>
+</div></section>
+
+<div class="container partners">
+<p style="color:var(--muted);font-size:14px">همکار رسمی ایرلاین‌های معتبر دنیا</p>
+<div class="logos">
+<span class="logo-pill">Emirates</span><span class="logo-pill">Qatar Airways</span><span class="logo-pill">Turkish Airlines</span><span class="logo-pill">Lufthansa</span><span class="logo-pill">Air France</span><span class="logo-pill">Singapore Airlines</span>
+</div>
+</div>
+
+<section id="tours" style="padding-top:20px"><div class="container">
+<span class="eyebrow">پکیج‌های ویژه</span>
+<h2 class="sec-title reveal">تورهای منتخب این فصل</h2>
+<p class="sec-sub reveal">گلچینی از محبوب‌ترین تورها با هتل‌های ۵ ستاره و پرواز مستقیم.</p>
+<div class="pack-grid">
+<div class="pack reveal"><div class="pack-img"><span class="pack-tag">پرفروش 🔥</span><img src="photos/maldives.webp" alt="تور مالدیو" loading="lazy"></div><div class="pack-body"><div class="stars">★★★★★ ۴.۹</div><h3>تور رویایی مالدیو</h3><div class="pack-info">۷ شب و ۸ روز • هتل ۵ ستاره ساحلی • پرواز مستقیم</div><div class="pack-foot"><div class="pack-price"><small>شروع از</small>۴۹٬۹۰۰٬۰۰۰ تومان</div><a href="#search" class="btn btn-primary" style="padding:10px 20px;font-size:13px">مشاهده تور</a></div></div></div>
+<div class="pack reveal"><div class="pack-img"><span class="pack-tag">پیشنهاد ویژه ✨</span><img src="photos/istanbul.webp" alt="تور استانبول" loading="lazy"></div><div class="pack-body"><div class="stars">★★★★★ ۴.۸</div><h3>تور استانبول + بسفر</h3><div class="pack-info">۴ شب و ۵ روز • هتل ۴ ستاره تکسیم • صبحانه + گشت شهری</div><div class="pack-foot"><div class="pack-price"><small>شروع از</small>۱۸٬۷۰۰٬۰۰۰ تومان</div><a href="#search" class="btn btn-primary" style="padding:10px 20px;font-size:13px">مشاهده تور</a></div></div></div>
+<div class="pack reveal"><div class="pack-img"><span class="pack-tag">لوکس 💎</span><img src="photos/paris.webp" alt="تور پاریس" loading="lazy"></div><div class="pack-body"><div class="stars">★★★★★ ۵.۰</div><h3>تور اروپا: پاریس + لندن</h3><div class="pack-info">۸ شب و ۹ روز • هتل ۵ ستاره • ویزای شینگن + قطار یورواستار</div><div class="pack-foot"><div class="pack-price"><small>شروع از</small>۹۸٬۰۰۰٬۰۰۰ تومان</div><a href="#search" class="btn btn-primary" style="padding:10px 20px;font-size:13px">مشاهده تور</a></div></div></div>
+</div>
+</div></section>
+
+<section style="background:#fff;border-radius:36px;width:min(1280px,96%);margin:0 auto"><div class="container">
+<span class="eyebrow">نظرات مسافران</span>
+<h2 class="sec-title reveal">مسافرانی که به ما اعتماد کردند</h2>
+<div class="testi-grid" style="margin-top:30px">
+<div class="testi reveal"><div class="testi-head"><div class="avatar">س</div><div><b>سارا محمدی</b><div style="font-size:12px;color:var(--muted)">سفر به مالدیو • ★★★★★</div></div></div><p>«بهترین سفر عمرم بود! از فرودگاه دنبالم اومدن تا هتل ساحلی فوق‌العاده. پشتیبانی‌شون حتی نیمه‌شب جواب می‌داد. حتماً دوباره با آسمان‌آرا سفر می‌کنم.»</p></div>
+<div class="testi reveal"><div class="testi-head"><div class="avatar">ا</div><div><b>امیر رضایی</b><div style="font-size:12px;color:var(--muted)">سفر به استانبول • ★★★★★</div></div></div><p>«قیمت بلیط از همه‌جا ارزون‌تر بود و ویزام رو سه‌روزه گرفتن. تور لیدرشون عالی بود، کاملاً حرفه‌ای و بی‌دغدغه.»</p></div>
+<div class="testi reveal"><div class="testi-head"><div class="avatar">ن</div><div><b>نگار کریمی</b><div style="font-size:12px;color:var(--muted)">سفر به پاریس • ★★★★★</div></div></div><p>«ماه‌عسلمون رو با تور پاریسشون رفتیم. هتل دقیقاً همونی بود که تو عکس‌ها بود. این فقط یه آژانس نیست، یه همراه واقعیه.»</p></div>
+</div>
+<div class="container stats reveal" style="margin-top:36px">
+<div class="stat"><b><span class="count" data-target="250000">۰</span>+</b><span>مسافر راضی</span></div>
+<div class="stat"><b><span class="count" data-target="120">۰</span>+</b><span>مقصد گردشگری</span></div>
+<div class="stat"><b><span class="count" data-target="500">۰</span>+</b><span>مسیر پروازی</span></div>
+<div class="stat"><b><span class="count" data-target="15">۰</span></b><span>سال تجربه</span></div>
+</div>
+</div></section>
+
+<section><div class="container">
+<span class="eyebrow">مجله سفر</span>
+<h2 class="sec-title reveal">الهام‌بخش سفر بعدی شما</h2>
+<div class="blog-grid" style="margin-top:30px">
+<div class="blog reveal"><div class="blog-img"><img src="photos/istanbul.webp" alt="بهترین زمان سفر به استانبول" loading="lazy"></div><div class="blog-body"><div class="blog-meta">راهنمای سفر • ۸ دقیقه</div><h3>بهترین زمان سفر به استانبول؛ بهار یا پاییز؟</h3></div></div>
+<div class="blog reveal"><div class="blog-img"><img src="photos/dubai.webp" alt="راهنمای سفر به دبی" loading="lazy"></div><div class="blog-body"><div class="blog-meta">راهنمای سفر • ۶ دقیقه</div><h3>راهنمای کامل سفر به دبی با بودجه‌های مختلف</h3></div></div>
+<div class="blog reveal"><div class="blog-img"><img src="photos/tokyo.webp" alt="مقاصد رویایی" loading="lazy"></div><div class="blog-body"><div class="blog-meta">الهام سفر • ۱۰ دقیقه</div><h3>۱۰ مقصد رویایی برای سفر که باید یک‌بار بروید</h3></div></div>
+<div class="blog reveal"><div class="blog-img"><img src="photos/cabin.webp" alt="نکات قبل از پرواز" loading="lazy"></div><div class="blog-body"><div class="blog-meta">نکات پرواز • ۵ دقیقه</div><h3>نکات مهم قبل از پرواز که هیچ‌کس به شما نمی‌گوید</h3></div></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="container newsletter reveal"><div>
+<h2 style="font-size:clamp(22px,3.6vw,32px)">مقصد بعدی‌تان را از دست ندهید ✈️</h2>
+<p style="color:#3a5a75;max-width:520px;margin:10px auto 0">با عضویت در خبرنامه، از جدیدترین پیشنهادهای سفر و قیمت‌های ویژه باخبر شوید.</p>
+<form class="news-form" onsubmit="return subscribe(event)"><input type="email" placeholder="آدرس ایمیل شما" required id="email"><button class="btn btn-primary">عضویت</button></form>
+<div id="newsMsg" style="margin-top:12px;font-size:14px;color:var(--deep);font-weight:700"></div>
+</div></div></section>
+
+<section style="padding-top:0"><div class="container">
+<div style="text-align:center;margin-bottom:30px"><span class="eyebrow">سوالات پرتکرار</span><h2 class="sec-title">هر سوالی دارید، اینجاست</h2></div>
+<div class="faq">
+<div class="faq-item"><button class="faq-q">چگونه بلیط هواپیما رزرو کنم؟ <span class="plus">+</span></button><div class="faq-a"><div>کافیست مبدا، مقصد و تاریخ را در فرم جستجو وارد کنید، پرواز مناسب را انتخاب و در کمتر از ۳ دقیقه با کارت بانکی پرداخت کنید. بلیط بلافاصله به ایمیل و پیامک شما ارسال می‌شود.</div></div></div>
+<div class="faq-item"><button class="faq-q">امکان استرداد بلیط وجود دارد؟ <span class="plus">+</span></button><div class="faq-a"><div>بله، اکثر بلیط‌ها طبق قوانین ایرلاین قابل استرداد هستند. درخواست را در پنل کاربری ثبت کنید؛ مبلغ معمولاً بین ۲۴ تا ۷۲ ساعت به حساب شما برمی‌گردد.</div></div></div>
+<div class="faq-item"><button class="faq-q">میزان بار مجاز پرواز چقدر است؟ <span class="plus">+</span></button><div class="faq-a"><div>در پروازهای داخلی معمولاً ۲۰ کیلوگرم و در پروازهای خارجی ۲۵ تا ۳۰ کیلوگرم بار مجاز است. میزان دقیق روی بلیط شما درج می‌شود.</div></div></div>
+<div class="faq-item"><button class="faq-q">چگونه می‌توانم تور رزرو کنم؟ <span class="plus">+</span></button><div class="faq-a"><div>تور موردنظر را انتخاب کنید، روی «مشاهده تور» بزنید و فرم رزرو را تکمیل کنید. کارشناسان ما برای نهایی‌کردن هتل و پرواز با شما تماس می‌گیرند.</div></div></div>
+<div class="faq-item"><button class="faq-q">آیا امکان پرداخت آنلاین وجود دارد؟ <span class="plus">+</span></button><div class="faq-a"><div>بله، پرداخت از طریق درگاه امن بانکی با تمام کارت‌های عضو شتاب امکان‌پذیر است. همچنین امکان پرداخت اقساطی برای تورها فراهم است.</div></div></div>
+<div class="faq-item"><button class="faq-q">پشتیبانی در چه ساعاتی فعال است؟ <span class="plus">+</span></button><div class="faq-a"><div>تیم پشتیبانی ما ۲۴ ساعته و ۷ روز هفته، حتی در ایام تعطیل، از طریق تلفن، چت و واتساپ پاسخ‌گوی شماست.</div></div></div>
+</div>
+</div></section>
+
+<footer><div class="container">
+<div class="foot-grid">
+<div><div class="logo" style="color:var(--text)"><span class="logo-mark">✈</span> آسمان‌آرا</div><p style="font-size:13.5px;color:#3a5a75;margin-top:12px;max-width:280px">ترکیبی از یک ایرلاین لوکس، یک آژانس مدرن و یک مجله سفر. اینجا شروع یک سفر است، نه فقط فروش بلیط.</p><div class="socials"><a href="#" title="اینستاگرام">📸</a><a href="#" title="تلگرام">✈️</a><a href="#" title="لینکدین">💼</a><a href="#" title="یوتیوب">▶️</a></div></div>
+<div><h4>دسترسی سریع</h4><a href="#">درباره ما</a><a href="#services">خدمات</a><a href="#dest">مقاصد</a><a href="#tours">تورها</a></div>
+<div><h4>خدمات</h4><a href="#">بلیط هواپیما</a><a href="#">رزرو هتل</a><a href="#">ویزا</a><a href="#">بیمه مسافرتی</a></div>
+<div><h4>راهنما</h4><a href="#">سوالات متداول</a><a href="#">شرایط استرداد</a><a href="#">قوانین بار</a><a href="#">تماس با ما</a></div>
+<div><h4>تماس</h4><a href="#">📞 ۰۲۱-۹۱۰۰۹۱۰۰</a><a href="#">✉️ hello@asemanara.ir</a><a href="#">📍 تهران، خیابان ولیعصر، برج آسمان</a></div>
+</div>
+<div class="copy">تمامی حقوق این وب‌سایت محفوظ است. © ۱۴۰۵ آسمان‌آرا</div>
+</div></footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60)},{passive:true});
+const ham=document.getElementById('ham'),mm=document.getElementById('mmenu');
+ham.onclick=()=>mm.classList.toggle('show');mm.onclick=()=>mm.classList.remove('show');
+function swapCity(){const f=document.getElementById('from'),t=document.getElementById('to');const v=f.value;f.value=t.options[0].text.includes('')?f.value:f.value;[f.innerHTML,t.innerHTML]=[t.innerHTML,f.innerHTML];}
+function searchFlight(e){e.preventDefault();const f=document.getElementById('from').value,t=document.getElementById('to').value;document.getElementById('searchResult').textContent=`✈️ در حال جستجوی پرواز از ${f} به ${t} ... بهترین قیمت‌ها به‌زودی نمایش داده می‌شود.`;return false;}
+function subscribe(e){e.preventDefault();const v=document.getElementById('email').value;document.getElementById('newsMsg').textContent=`🎉 ${v} با موفقیت عضو شد! اولین پیشنهاد شگفت‌انگیز به‌زودی برایتان می‌آید.`;document.getElementById('email').value='';return false;}
+document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>{const it=b.parentElement;const was=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!was)it.classList.add('open');}));
+/* CINEMATIC SCROLL HERO ENGINE — 3 stages: intro (no header) -> window video -> clear sunset/clouds -> content+header */
+(function(){
+var scrollEl=document.getElementById('heroScroll'),video=document.getElementById('heroVideo'),intro=document.getElementById('heroIntro'),content=document.getElementById('heroContent'),overlay=document.getElementById('heroOverlay'),clouds=document.getElementById('heroClouds'),siteHeader=document.querySelector('header');
+if(!scrollEl||!video||!intro||!content)return;
+var TOTAL_FRAMES=122;
+try{var df=parseInt(video.getAttribute('data-frames'),10);if(df>1)TOTAL_FRAMES=df;}catch(e){}
+var revs=Array.prototype.slice.call(content.querySelectorAll('.h-rev'));
+var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+video.muted=true;try{video.pause();}catch(e){}
+video.removeAttribute('autoplay');video.removeAttribute('loop');
+video.setAttribute('preload','auto');video.setAttribute('playsinline','');
+var duration=0,ready=false;
+function frameTimeFor(f){if(!ready||duration<=0)return 0;var f2=Math.max(0,Math.min(TOTAL_FRAMES-1,f));var tm=(f2/(TOTAL_FRAMES-1))*duration;if(tm>duration-0.05)tm=Math.max(0,duration-0.05);return tm;}
+function onMeta(){try{if(isFinite(video.duration)&&video.duration>0){duration=video.duration;ready=true;try{video.currentTime=0;}catch(e){}}}catch(e){}}
+video.addEventListener('loadedmetadata',onMeta);
+if(video.readyState>=1&&isFinite(video.duration)&&video.duration>0){duration=video.duration;ready=true;}
+try{video.load();}catch(e){}
+var scrollH=1,vh=window.innerHeight||800;
+function measure(){scrollH=scrollEl.offsetHeight||1;vh=window.innerHeight||800;}
+measure();window.addEventListener('resize',measure,{passive:true});
+function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
+function sstep(a,b,x){var t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);}
+var target=0;
+function updateTarget(){var max=Math.max(1,scrollH-vh);var y=clamp(window.scrollY||0,0,max);target=clamp(y/max,0,1);}
+window.addEventListener('scroll',updateTarget,{passive:true});updateTarget();
+function setHeader(show){if(!siteHeader)return;if(show){siteHeader.classList.add('hdr-show');}else{siteHeader.classList.remove('hdr-show');}}
+setHeader(false);
+content.style.visibility='hidden';
+video.style.opacity='0';
+if(reduced){
+intro.style.opacity='0';intro.style.visibility='hidden';
+video.style.opacity='1';
+content.style.visibility='visible';
+revs.forEach(function(el){el.style.opacity='1';el.style.transform='translateY(0)';});
+if(overlay)overlay.style.opacity='0.45';
+if(clouds)clouds.style.opacity='0';
+setHeader(true);
+return;
+}
+var cIntro=1,cVidOp=0,cFrameFloat=0,cCont=0,cOver=0.9,cCloud=0.9,lastAppliedFrame=-1,lastSet=0,lastIntro=-1,lastCont=-1,lastVis=false,lastVidOp=-1,lastOver=-1,lastCloud=-1,lastHdr=null;
+function seekToFrame(f,now){
+if(!ready||video.readyState<2||video.seeking)return false;
+var tm=frameTimeFor(f);
+try{
+if(typeof video.fastSeek==='function'){video.fastSeek(tm);}else{video.currentTime=tm;}
+lastSet=now;return true;
+}catch(e){return false;}
+}
+function frame(now){
+/* stage 1: intro only (header hidden) */
+var tIntro=1-sstep(0.02,0.16,target);
+/* stage 2: window fades in after scroll starts, then scrubs to clouds */
+var tVidOp=sstep(0.08,0.28,target);
+var vProg=sstep(0.12,0.80,target);
+var tFrameFloat=vProg*(TOTAL_FRAMES-1);
+/* stage 2b: sunset/clouds shown CLEAR — overlay dips, fake clouds fade */
+var tOver=0.9-0.65*sstep(0.35,0.65,target)+0.30*sstep(0.78,0.95,target);
+var tCloud=0.9*(1-sstep(0.30,0.60,target));
+/* stage 3: content + site header come late, over clear sunset */
+var tCont=sstep(0.72,0.92,target);
+var tHdr=(target>0.85)||((window.scrollY||0)>(scrollH-vh*0.6));
+cIntro+=(tIntro-cIntro)*0.22;
+cVidOp+=(tVidOp-cVidOp)*0.15;
+cCont+=(tCont-cCont)*0.10;
+cFrameFloat+=(tFrameFloat-cFrameFloat)*0.18;
+cOver+=(tOver-cOver)*0.12;
+cCloud+=(tCloud-cCloud)*0.12;
+if(ready){
+var appliedFrame=Math.round(cFrameFloat);
+if(appliedFrame<0)appliedFrame=0;if(appliedFrame>TOTAL_FRAMES-1)appliedFrame=TOTAL_FRAMES-1;
+if(appliedFrame!==lastAppliedFrame){
+if((now-lastSet)>30){
+if(seekToFrame(appliedFrame,now)){lastAppliedFrame=appliedFrame;}
+}
+}
+}
+if(Math.abs(cVidOp-lastVidOp)>0.003){video.style.opacity=cVidOp.toFixed(3);lastVidOp=cVidOp;}
+if(Math.abs(cIntro-lastIntro)>0.002){
+intro.style.opacity=cIntro.toFixed(3);
+intro.style.transform='translateY('+(-24*(1-cIntro)).toFixed(1)+'px)';
+intro.style.visibility=cIntro<0.02?'hidden':'visible';
+lastIntro=cIntro;
+}
+if(overlay&&Math.abs(cOver-lastOver)>0.003){overlay.style.opacity=cOver.toFixed(3);lastOver=cOver;}
+if(clouds&&Math.abs(cCloud-lastCloud)>0.003){clouds.style.opacity=cCloud.toFixed(3);lastCloud=cCloud;}
+var vis=cCont>0.02;
+if(vis!==lastVis){content.style.visibility=vis?'visible':'hidden';lastVis=vis;}
+if(vis||Math.abs(cCont-lastCont)>0.0008){
+for(var i=0;i<revs.length;i++){
+var local=clamp(cCont*1.45-i*0.13,0,1);
+var e=local*local*(3-2*local);
+revs[i].style.opacity=e.toFixed(3);
+revs[i].style.transform='translateY('+((1-e)*36).toFixed(1)+'px)';
+}
+lastCont=cCont;
+}
+if(tHdr!==lastHdr){setHeader(tHdr);lastHdr=tHdr;}
+requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const faDigits=n=>Number(n).toLocaleString('fa-IR');
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=+el.dataset.target;cio.unobserve(el);let cur=0;const step=Math.max(1,Math.round(target/80));const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t);}el.textContent=faDigits(cur);},28);}),{threshold:.5});
+document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>
